@@ -5,7 +5,7 @@ const SECRET  = 'ef3c5302'
 
 
 module.exports = {
-    showList:(req,res)=>{
+    showListALL:(req,res)=>{
     const result = User.findAll({}).then((result)=>{
         res.status(200).json({
             msg: 'Listagem, ok',
@@ -20,7 +20,23 @@ module.exports = {
             dados: result
         })
     })
-
+    },
+    showListType:(req,res)=>{
+        
+        const result = User.findAll({where:{funcao_sistema: req.params.typeUser}}).then((result)=>{
+            res.status(200).json({
+                msg: 'Listagem, ok',
+                err: false,
+                dados: result
+            })
+        }).catch((err)=>{
+            res.status(406).json({
+                msg: 'Listagem, ERRO',
+                err: true,
+                err_msg: err,
+                dados: result
+            })
+        })
     },
     register:(req,res)=>{
       const matricula = req.body.matricula

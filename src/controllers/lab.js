@@ -86,6 +86,26 @@ module.exports = {
             })
         })
     },
+    delete:(req,res)=>{
+        const id = req.params.lab // id laboratório 
+
+        Lab.destroy({where:{id}}).then((result)=>{
+            
+            res.status(200).json({
+            msg: 'Delete, ok',
+            err: false,
+            dados: result})
+        }).catch((err)=>{
+            res.status(401).json({
+            msg: 'Delete, ERROR',
+            err: true,
+            err_msg: err,
+            })
+        })
+    },
+
+
+
     authorize:(req,res)=>{ 
         const matricula = req.body.matricula
         Lab.update({funcao_sistema:'ADMIN'},{where:{matricula}}).then((result)=>{
@@ -117,8 +137,9 @@ module.exports = {
             err_msg: err,
             })
         })
-    },
-  
- 
+    }, 
 }
+
+//lab apagar
+//user editar,apagar,listar
 
