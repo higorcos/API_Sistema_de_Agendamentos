@@ -25,6 +25,10 @@ const booking = database.define('reservas',{
         type: sequelize.DATEONLY,
         allowNull:false
     },
+    answered:{
+        type: sequelize.INTEGER,
+        defaultValue: 0,
+    }
     
 });
 

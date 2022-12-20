@@ -34,7 +34,12 @@ routes.post('/time/visibility/:id/:states',time.visibility) //mudar visibilidade
 //booking
 routes.post('/booking/new',booking.created) // criar
 routes.get('/booking/list',booking.list) // list 
-routes.get('/booking/list/:idLab',booking.listLab) // list 
+routes.get('/booking/list/:idLab/:answered',booking.listLab) // list 
+routes.get('/booking/list/:idBooking',booking.showBooking) // Mostar infor da reserva
+routes.post('/booking/response/:idBooking/:status_pedido/:answered',booking.update) // Mostar infor da reserva
+routes.get('/email',booking.testeemail) // Mostrar infor da reserva
+routes.get('/list/user/booking/:user/:answered',booking.listLabUser) // Mostrar infor da reserva
+
 // routes.get('/booking/list',booking.list) // list dos pedidos de um usuário 
 
 //listar todos os pedidos de um lab(separar pelos starus)
